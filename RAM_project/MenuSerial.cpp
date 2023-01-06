@@ -13,7 +13,7 @@ void MenuSerial::PrintMenu()
 
 char MenuSerial::OptionSelected()
 {
-  char option = 'a';
+  char option = 'o';
     if(!menuPrinted)
     {
       PrintMenu();
@@ -34,7 +34,7 @@ char MenuSerial::OptionSelected()
 void MenuSerial::ClearMenu()
 {
   int i = 0;
-  while(i<19)
+  while(i<14)
   {
     Serial.println();
     i++;

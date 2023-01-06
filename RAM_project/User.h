@@ -2,11 +2,12 @@
 
 class User
 {
-
   private:
-  int admin_password=1234;
+  int adminPassword=1234;
   public:
-  void add_user();
-  void delete_user();
-
+  void AddUser();
+  void DeleteUser();
+  void UserList();
+  void AccessDoorOne();
+  void AccessDoorTwo()
 }
