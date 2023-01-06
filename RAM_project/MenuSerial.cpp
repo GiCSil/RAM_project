@@ -14,24 +14,24 @@ void MenuSerial::PrintMenu()
 char MenuSerial::OptionSelected()
 {
   char option = 'o';
-    if(!menuPrinted)
+    if(!menuPrinted)              // checks if you have to print the menu
     {
       PrintMenu();
       menuPrinted = true;
     }
-    while(!Serial.available())
+    while(!Serial.available())    // does nothing if the serial port is unavailable
     {
     }
     if(Serial.available()>0)
     {
-      option = Serial.read();
+      option = Serial.read();     // reads the serial console
     }
   menuPrinted = false;
   Serial.write("\n\n\n");
   return option;
 }
 
-void MenuSerial::ClearMenu()
+void MenuSerial::ClearMenu()      // just clear a little of the serial
 {
   int i = 0;
   while(i<14)

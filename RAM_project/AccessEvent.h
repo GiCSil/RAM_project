@@ -6,5 +6,5 @@ class AccessEvent
   public:
   void AddEvent();
   void DeleteEvent();
-  void EventList();
+  void ReturnEventList();
 }
