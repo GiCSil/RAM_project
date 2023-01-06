@@ -2,7 +2,15 @@
 //Author: Giovane Carvalho Silvério
 //06/01/2023
 
+//-- Includes --
+#include "MenuSerial.h"
+#include "User.h"
 
+//-- Declarations --
+MenuSerial menu;
+User user;
+
+//-- Setup --
 void setup() {
   
   Serial.begin(9600);
@@ -11,16 +19,7 @@ void setup() {
   }
 }
 
+//-- Main Loop --
 void loop() {
-  // menu options
-  Serial.println("1 - Register User");
-  Serial.println("2 - List of Users");
-  Serial.println("3 - List of Events");
-  Serial.println("4 - Access Door 1");
-  Serial.println("5 - Access Door 2");
-
-  // if there's any serial available, read it:
-  while (Serial.available() > 0) {
-
-  }
+  
 }
