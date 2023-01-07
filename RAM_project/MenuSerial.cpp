@@ -11,6 +11,14 @@ void MenuSerial::PrintMenu()
   Serial.println("5 - Access Door 2");
 }
 
+MenuSerial::MenuSerial()
+{
+}
+
+MenuSerial::~MenuSerial()
+{
+}
+
 char MenuSerial::OptionSelected()
 {
   char option = 'o';

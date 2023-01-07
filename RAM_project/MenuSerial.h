@@ -3,9 +3,11 @@
 class MenuSerial
 {
   private:
-  bool menuPrinted = false;
-  void PrintMenu();
+    bool menuPrinted = false;
+    void PrintMenu();
   public:
-  char OptionSelected();
-  void ClearMenu();
-}
+    MenuSerial();
+    ~MenuSerial();
+    char OptionSelected();
+    void ClearMenu();
+};

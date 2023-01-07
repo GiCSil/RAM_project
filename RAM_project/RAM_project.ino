@@ -16,13 +16,13 @@
 #include "User.h"
 
 //-- Declarations of Objects and Aux Variables --
-MenuSerial menu;
-User user;
 char menuSelection;           // selects the menu function
 bool stopInstruction = true;  // stop instruction
 int time = timeCounter;
 bool door1 = false;
 bool door2 = false;
+MenuSerial menu;
+User user;
 
 //-- Functions --
 void TimerInterrupt() // timer interruption of 5seconds to close the doors
@@ -40,14 +40,14 @@ void TimerInterrupt() // timer interruption of 5seconds to close the doors
   Timer1.stop();
 }
 
-void interrupt1()
+void interruptOne()
 {
-  digitalWrite(DOOR_ONE), LOW);
+  digitalWrite(DOOR_ONE, LOW);
 }
                                 // button interruptions to close the doors
-void interrup2()
+void interrupTwo()
 {
-  digitalWrite(DOOR_TWO), LOW);
+  digitalWrite(DOOR_TWO, LOW);
 }
 
 void DoorClosed(int door) // trigger the timer interruptions to close the doors
@@ -56,11 +56,11 @@ void DoorClosed(int door) // trigger the timer interruptions to close the doors
   {
   case '1':
   door1 = true;
-  Timer1.initialize(5000000);
+  Timer1.start();
   break;
   case '2':
   door2 = true;
-  Timer1.initialize(5000000);
+  Timer1.start();
   break;
   default:
   door1 = false;
@@ -83,12 +83,16 @@ void setup()
   pinMode(DOOR_ONE, OUTPUT);  // represents the door 1
   pinMode(DOOR_TWO, OUTPUT);  // represents the door 2
   pinMode(CLOSE_ONE, INPUT_PULLUP); // represents the close button of the door 1
+  attachInterrupt(digitalPinToInterrupt(CLOSE_ONE), interruptOne, LOW);
   pinMode(CLOSE_TWO, INPUT_PULLUP); // represents the close button of the door 2
+  attachInterrupt(digitalPinToInterrupt(CLOSE_TWO), interrupTwo, LOW);
 
   // setup of the timer and interruption
-  Timer1.attachInterrupt(TimerInterrupt());
-  attachInterrupt(digitalPinToInterrupt(CLOSE_ONE), interrupt1, LOW);
-  attachInterrupt(digitalPinToInterrupt(CLOSE_TWO), interrupt2, LOW);
+  Timer1.initialize(5000000);
+  Timer1.attachInterrupt(TimerInterrupt);
+  Timer1.stop();
+  
+  
 }
 
 //-- Main Loop --

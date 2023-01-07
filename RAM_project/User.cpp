@@ -1,5 +1,13 @@
 #include "User.h"
 
+User::User()
+{
+}
+
+User::~User()
+{
+}
+
 void User::AddUser()
 {
   String user;
@@ -9,7 +17,7 @@ void User::AddUser()
   Serial.println("Are you an admin user? y or n\n");
   while (Serial.available() > 0)
   {
-    user = Serial.read;
+    user = Serial.read();
     break;
   }
   if(user == 'y')
@@ -39,14 +47,14 @@ void User::AddUser()
   } 
   else 
   {
-    Serial.println("Ilegal answer\n")
+    Serial.println("Ilegal answer\n");
     check = false;
     admin = false;
   }
 
   if(check)
   {
-    Serial.println("Please, enter the new username:\n")
+    Serial.println("Please, enter the new username:\n");
     while (Serial.available() > 0)
     {
       user = Serial.readStringUntil('\n');
@@ -54,7 +62,7 @@ void User::AddUser()
     }
     username[users] = user;  // added the username to the list of users
 
-    Serial.println("Please, enter the 4 digit password:\n")
+    Serial.println("Please, enter the 4 digit password:\n");
     while (Serial.available() > 0)
     {
       user = Serial.readStringUntil('\n');
@@ -115,11 +123,11 @@ bool User::AccessDoorOne()
     }
   }
 
-  Serial.println("Access denied.\n")
+  Serial.println("Access denied.\n");
   return false;
 }
 
-void User::AccessDoorTwo()
+bool User::AccessDoorTwo()
 {
   String passw;
 
@@ -148,8 +156,7 @@ void User::AccessDoorTwo()
     }
   }
 
-  Serial.println("Access denied.\n")
-  
+  Serial.println("Access denied.\n");
   return false;
 }
 
