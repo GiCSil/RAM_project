@@ -14,13 +14,10 @@
 #include <TimerOne.h>
 #include "MenuSerial.h"
 #include "User.h"
-#include "AccessEvent.h"
-
 
 //-- Declarations of Objects and Aux Variables --
 MenuSerial menu;
 User user;
-AccessEvent event;
 char menuSelection;           // selects the menu function
 bool stopInstruction = true;  // stop instruction
 int time = timeCounter;
@@ -28,7 +25,7 @@ bool door1 = false;
 bool door2 = false;
 
 //-- Functions --
-void TimerInterrupt()
+void TimerInterrupt() // timer interruption of 5seconds to close the doors
 {
   if (door1)
   {
@@ -47,13 +44,13 @@ void interrupt1()
 {
   digitalWrite(DOOR_ONE), LOW);
 }
-
+                                // button interruptions to close the doors
 void interrup2()
 {
   digitalWrite(DOOR_TWO), LOW);
 }
 
-void DoorClosed(int door)
+void DoorClosed(int door) // trigger the timer interruptions to close the doors
 {
   switch (door)
   {
@@ -66,6 +63,8 @@ void DoorClosed(int door)
   Timer1.initialize(5000000);
   break;
   default:
+  door1 = false;
+  door2 = false;
   Timer1.stop();
   break;
   }
@@ -112,7 +111,7 @@ void loop()
       user.ReturnUserList();
       break;
       case '3':
-      event.ReturnEventList();
+      user.ReturnEventList();
       break;
       case '4':
       if(user.AccessDoorOne())
@@ -122,7 +121,7 @@ void loop()
         DoorClosed(1);
       } else
       {
-       Serial.println("Access to door 1 denied!"); 
+        Serial.println("Access to door 1 denied!"); 
       }
       break;
       case '5':
@@ -133,13 +132,13 @@ void loop()
         DoorClosed(2);
       } else
       {
-       Serial.println("Access to door 2 denied!"); 
+        Serial.println("Access to door 2 denied!"); 
       }
       break;
       default:
       Serial.println("The option selected does not exists. Try again.");
       break;
     }
-    stopInstruction = true;  
   }
+  stopInstruction = true;
 }

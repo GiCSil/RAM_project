@@ -1,17 +1,22 @@
 #include <Arduino.h>
 
-#define MAX_USERS 50
+#define MAX_USERS 10
+#define MAX_EVENTS 10
 
 class User
 {
   private:  
   int users PROGMEM = 0;
-  const char adminPassword[] PROGMEM = "0000";
-  String username[MAX_USERS];
-  String password[MAX_USERS];
+  int events PROGMEM = 0;
+  String adminPassword PROGMEM = {"0000"};
+  String adminPasswords[MAX_USERS] PROGMEM = {"", "", "", "", "", "", "", "", "", ""};
+  String username[MAX_USERS] PROGMEM = {"", "", "", "", "", "", "", "", "", ""};
+  String password[MAX_USERS] PROGMEM = {"", "", "", "", "", "", "", "", "", ""};
+  String eventsLog[2][MAX_EVENTS] PROGMEM = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
   public:
   void AddUser();
   void ReturnUserList();
   bool AccessDoorOne();
-  bool AccessDoorTwo()
+  bool AccessDoorTwo();
+  void ReturnEventList();
 }
