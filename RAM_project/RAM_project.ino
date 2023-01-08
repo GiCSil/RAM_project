@@ -91,8 +91,8 @@ void setup()
   Timer1.initialize(5000000);
   Timer1.attachInterrupt(TimerInterrupt);
   Timer1.stop();
-  
-  
+
+  stopInstruction = true;
 }
 
 //-- Main Loop --
@@ -109,39 +109,47 @@ void loop()
     switch (menuSelection)
     {
       case '1':
-      user.AddUser();
-      break;
+        Serial.flush();
+        user.AddUser();
+        break;
       case '2':
-      user.ReturnUserList();
-      break;
+        Serial.flush();
+        user.ReturnUserList();
+        break;
       case '3':
-      user.ReturnEventList();
-      break;
+        Serial.flush();
+        user.ReturnEventList();
+        break;
       case '4':
-      if(user.AccessDoorOne())
-      {
-        Serial.println("Access to door 1 granted!");
-        digitalWrite(DOOR_ONE, HIGH); //opens door 1
-        DoorClosed(1);
-      } else
-      {
+        Serial.flush();
+        if(user.AccessDoorOne())
+        {
+          Serial.println("Access to door 1 granted!");
+          digitalWrite(DOOR_ONE, HIGH); //opens door 1
+          DoorClosed(1);
+        }
+        else
+        {
         Serial.println("Access to door 1 denied!"); 
-      }
-      break;
+        }
+        break;
       case '5':
-      if(user.AccessDoorTwo())
-      {
-        Serial.println("Access to door 2 granted!");
-        digitalWrite(DOOR_TWO, HIGH); // opens door 2
-        DoorClosed(2);
-      } else
-      {
-        Serial.println("Access to door 2 denied!"); 
-      }
-      break;
+        Serial.flush();
+        if(user.AccessDoorTwo())
+        {
+          Serial.println("Access to door 2 granted!");
+          digitalWrite(DOOR_TWO, HIGH); // opens door 2
+          DoorClosed(2);
+        }
+        else
+        {
+          Serial.println("Access to door 2 denied!"); 
+        }
+        break;
       default:
-      Serial.println("The option selected does not exists. Try again.");
-      break;
+        Serial.flush();
+        Serial.println("The option selected does not exists. Try again.");
+        break;
     }
   }
   stopInstruction = true;

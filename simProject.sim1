@@ -1,0 +1,43 @@
+<circuit version="1.0.0-RC3" rev="1148" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Subcircuit" CircId="Uno-2" mainComp="false" Show_id="true" Show_Val="false" Pos="896,464" rotation="0" hflip="1" vflip="1" label="Uno-2" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
+<mainCompProps itemtype="MCU" CircId="2_mega328-109" mainComp="true" Show_id="false" Show_Val="false" Pos="20,20" rotation="0" hflip="1" vflip="1" label="2_mega328-109" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="RAM_project/build/arduino.avr.uno/RAM_project.ino.hex" Auto_Load="false" Rst_enabled="true" Ext_Osc="true" Wdt_enabled="false" />
+</item>
+
+<item itemtype="Led" CircId="Led-6" mainComp="false" Show_id="false" Show_Val="false" Pos="812,620" rotation="-180" hflip="1" vflip="1" label="Led-6" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Yellow" Grounded="false" Threshold="2.4 V" MaxCurrent="0.03 A" Resistance="0.6 Ω" />
+
+<item itemtype="Led" CircId="Led-7" mainComp="false" Show_id="false" Show_Val="false" Pos="812,576" rotation="-180" hflip="1" vflip="1" label="Led-7" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Yellow" Grounded="false" Threshold="2.4 V" MaxCurrent="0.03 A" Resistance="0.6 Ω" />
+
+<item itemtype="Push" CircId="Push-8" mainComp="false" Show_id="false" Show_Val="false" Pos="812,468" rotation="0" hflip="1" vflip="1" label="Push-8" idLabPos="-12,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1 _Poles" />
+
+<item itemtype="Push" CircId="Push-9" mainComp="false" Show_id="false" Show_Val="false" Pos="812,516" rotation="0" hflip="1" vflip="1" label="Push-9" idLabPos="-12,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1 _Poles" />
+
+<item itemtype="Node" CircId="Node-26" mainComp="false" Pos="716,516" />
+
+<item itemtype="Node" CircId="Node-29" mainComp="false" Pos="716,576" />
+
+<item itemtype="Node" CircId="Node-32" mainComp="false" Pos="716,620" />
+
+<item itemtype="Connector" uid="connector-33" startpinid="Uno-2-2" endpinid="Push-8-switch0pinN" pointList="904,496,864,496,864,468,828,468" />
+
+<item itemtype="Connector" uid="connector-34" startpinid="Uno-2-3" endpinid="Push-9-switch0pinN" pointList="904,504,876,504,876,516,828,516" />
+
+<item itemtype="Connector" uid="connector-35" startpinid="Uno-2-7" endpinid="Led-7-lPin" pointList="904,536,860,536,860,576,828,576" />
+
+<item itemtype="Connector" uid="connector-36" startpinid="Push-8-pinP0" endpinid="Node-26-0" pointList="796,468,716,468,716,516" />
+
+<item itemtype="Connector" uid="connector-37" startpinid="Led-6-lPin" endpinid="Uno-2-8" pointList="828,620,880,620,880,552,904,552" />
+
+<item itemtype="Connector" uid="connector-38" startpinid="Uno-2-GND2" endpinid="Node-32-0" pointList="904,600,892,600,892,676,716,676,716,620" />
+
+<item itemtype="Connector" uid="connector-39" startpinid="Node-26-2" endpinid="Push-9-pinP0" pointList="716,516,796,516" />
+
+<item itemtype="Connector" uid="connector-40" startpinid="Led-7-rPin" endpinid="Node-29-1" pointList="796,576,716,576" />
+
+<item itemtype="Connector" uid="connector-41" startpinid="Node-29-2" endpinid="Node-26-1" pointList="716,576,716,516" />
+
+<item itemtype="Connector" uid="connector-42" startpinid="Led-6-rPin" endpinid="Node-32-1" pointList="796,620,716,620" />
+
+<item itemtype="Connector" uid="connector-43" startpinid="Node-32-2" endpinid="Node-29-0" pointList="716,620,716,576" />
+
+</circuit>

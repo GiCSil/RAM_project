@@ -22,6 +22,7 @@ void User::AddUser()
   }
   if(user == 'y')
   {
+    Serial.flush();
     Serial.println("Type in the admin password:\n");
     while (Serial.available() > 0)
     {
@@ -30,23 +31,27 @@ void User::AddUser()
     }
     if(user.equals(adminPassword))
     {
+      Serial.flush();
       check = true;
       admin = true;
     }
     else
     {
+      Serial.flush();
       Serial.println("Incorrect password. Registration denied.\n");
       check = false;
       admin = false;
     }
   } 
   else if(user =='n')
-  {    
+  {
+    Serial.flush();
     check = true;
     admin = false;
   } 
   else 
   {
+    Serial.flush();
     Serial.println("Ilegal answer\n");
     check = false;
     admin = false;
@@ -61,6 +66,7 @@ void User::AddUser()
       break;
     }
     username[users] = user;  // added the username to the list of users
+    Serial.flush();
 
     Serial.println("Please, enter the 4 digit password:\n");
     while (Serial.available() > 0)
@@ -68,6 +74,7 @@ void User::AddUser()
       user = Serial.readStringUntil('\n');
       break;
     }
+    Serial.flush();
     if(admin)
     {
       adminPasswords[users] = user;
@@ -104,7 +111,7 @@ bool User::AccessDoorOne()
     passw = Serial.readStringUntil('\n');
     break;
   }
-
+  Serial.flush();
   for(int i = 0; i <= users; i++)
   {
     if(password[i].equals(passw))
@@ -137,7 +144,7 @@ bool User::AccessDoorTwo()
     passw = Serial.readStringUntil('\n');
     break;
   }
-
+  Serial.flush();
   for(int i = 0; i <= users; i++)
   {
     if(password[i].equals(passw))
